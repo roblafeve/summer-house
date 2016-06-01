@@ -1,0 +1,32 @@
+doctype html
+html
+
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		title= title || 'Summer House'
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+		link(href="/styles/site.css", rel="stylesheet")
+		block css
+		block head
+
+	body
+
+		#header
+
+			div(role="navigation")
+				ul
+					each link in navLinks
+						li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+
+		#body
+			
+			block content
+
+		#footer Footer
+
+		if user && user.canAccessKeystone
+			script(src='/keystone/js/content/editor.js')
+
+		block js
